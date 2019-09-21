@@ -2,8 +2,9 @@ import React from 'react';
 import API from '../../../helpers/API';
 // components
 import Item from '../Item/Item';
+import './Main.css';
 
-class Currency extends React.Component {
+class Main extends React.Component {
 
   constructor(props) {
     super(props);
@@ -34,7 +35,7 @@ class Currency extends React.Component {
     });
   };
 
-  handleDelete = currency => {
+  handleDelete = (currency) => {
     const items = this.state.selectedCurrency.filter(item => item.currency !== currency);
     this.setState({ selectedCurrency: items });
   };
@@ -43,7 +44,7 @@ class Currency extends React.Component {
     const { currency, selectedCurrency, value } = this.state;
 
     return (
-      <div>
+      <div className="currencyWrapper">
         {selectedCurrency.map(item =>
           <Item 
             key={item.currency}
@@ -61,4 +62,4 @@ class Currency extends React.Component {
   }
 }
 
-export default Currency;
+export default Main;
