@@ -1,12 +1,15 @@
 import React from 'react';
 // components
 import Main from './components/modules/Main/Main';
+import Header from './components/partials/Header/Header';
+// assets
+import logo from './assets/images/logo.png';
 import './App.css';
 
 function App() {
   return (
     <div>
-      <h1>Welcome</h1>
+      <Header logo={logo} />
       <Main />
     </div>
   );

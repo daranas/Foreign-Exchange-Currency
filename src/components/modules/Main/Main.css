@@ -1,8 +1,9 @@
 .currencyWrapper {
+  background: #ffffff;
   max-width: 600px;
   margin: 0 auto;
   -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
+  border-radius: 3px;
 }
