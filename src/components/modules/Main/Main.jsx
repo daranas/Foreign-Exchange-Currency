@@ -25,21 +25,34 @@ class Main extends React.Component {
 
   handleAddItem = (e) => {
     e.preventDefault();
-    const { currency, selectedCurrency } = this.state;
-    const data = {
-      'currency': e.target.value,
-      'value': currency[e.target.value]
-    };
-    
-    this.setState({
-      selectedCurrency: selectedCurrency.concat(data)
-    });
+    const { defaultValue, currency, selectedCurrency } = this.state;
+    if (e.target.value) {
+      const data = {
+        'currency': e.target.value,
+        'default': currency[e.target.value],
+        'value': currency[e.target.value] * defaultValue
+      };
+      
+      this.setState({
+        selectedCurrency: selectedCurrency.concat(data),
+        value: e.target.value
+      }); 
+    }
   };
 
   handleChange = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
-    
+    let setNumber = parseInt(e.target.value);
+
+    this.setState(prevState => ({
+      ...prevState,
+      selectedCurrency: prevState.selectedCurrency.map(currency => ({
+        ...currency,
+        value: currency.value * setNumber
+     }))
+    }))
+
+    this.setState({ defaultValue: setNumber })
   }
 
   handleDelete = (currency) => {
@@ -61,6 +74,7 @@ class Main extends React.Component {
 
     return (
       <div className="ovo-currency-wrapper">
+        <label htmlFor="number" className="floating-label">USD</label>
         <input type="number"
           onChange={this.handleChange}
           defaultValue={defaultValue} />
@@ -69,11 +83,13 @@ class Main extends React.Component {
             key={item.currency}
             currency={item.currency} 
             value={this.toCurrency(item.value)}
+            default={this.toCurrency(item.default)}
             onDelete={this.handleDelete} />
         )}
         <div className="add-currency">
           <label htmlFor="currency">Add Currency</label>
           <select onChange={this.handleAddItem} value={value}>
+            <option value="">Select Currency</option>
             {Object.keys(currency).map(key =>
               <option key={key} value={key}>{key}</option>
             )};

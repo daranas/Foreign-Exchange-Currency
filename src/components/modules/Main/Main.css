@@ -1,4 +1,5 @@
 .ovo-currency-wrapper {
+  position: relative;
   background: #ffffff;
   max-width: 600px;
   margin: 0 auto;
@@ -16,6 +17,12 @@
   font-size: 16px;
   border-left: 0;
   border-right: 0;
+}
+
+.ovo-currency-wrapper .floating-label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 
 .ovo-currency-wrapper .add-currency {
