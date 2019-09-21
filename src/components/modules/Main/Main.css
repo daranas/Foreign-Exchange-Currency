@@ -14,15 +14,17 @@
   text-align: right;
   border: 1px solid #eeeeee;
   padding: 10px;
-  font-size: 16px;
+  font-size: 18px;
   border-left: 0;
   border-right: 0;
 }
 
 .ovo-currency-wrapper .floating-label {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 12px;
+  left: 12px;
+  color: #cccccc;
+  font-size: 14px;
 }
 
 .ovo-currency-wrapper .add-currency {

@@ -74,7 +74,7 @@ class Main extends React.Component {
 
     return (
       <div className="ovo-currency-wrapper">
-        <label htmlFor="number" className="floating-label">USD</label>
+        <label htmlFor="number" className="floating-label">USD - United States Dollars</label>
         <input type="number"
           onChange={this.handleChange}
           defaultValue={defaultValue} />
