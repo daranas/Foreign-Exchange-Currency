@@ -48,7 +48,7 @@ class Main extends React.Component {
       ...prevState,
       selectedCurrency: prevState.selectedCurrency.map(currency => ({
         ...currency,
-        value: currency.value * setNumber
+        value: currency.default * setNumber
      }))
     }))
 
