@@ -13,14 +13,30 @@ class Main extends React.Component {
       defaultValue: 10,
       currency: {},
       selectedCurrency: [],
-      value: '?'
+      value: '?',
+      defaultCurrency: ['USD', 'CAD', 'IDR', 'GBP', 'CHF']
     }
   }
 
   async componentDidMount() {
+    const { defaultValue, defaultCurrency } = this.state;
+
     let getCurrency = await API.get('/latest?base=USD');
     let currency = getCurrency.data.rates;
-    this.setState({ currency });
+
+    let setData = [];
+    Object.keys(currency).forEach((i) => defaultCurrency.forEach((j) => {
+      if (i === j) {
+        const defaultData = {
+          'currency': i,
+          'default': currency[i],
+          'value': currency[i] * defaultValue
+        };
+        setData.push(defaultData);
+      }
+    }));
+    
+    this.setState({ currency,  selectedCurrency: setData});
   }
 
   handleAddItem = (e) => {

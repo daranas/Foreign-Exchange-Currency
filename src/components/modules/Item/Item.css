@@ -1,23 +1,24 @@
 .ovo-item {
   position: relative;
-  padding: 20px;
+  padding: 12px 20px;
   border-bottom: 1px solid #eee;
 }
 
 .ovo-item h3 {
   font-weight: 400;
-  font-size: 18px;
+  font-size: 16px;
   margin: 0;
 }
 
 .ovo-item h1 {
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: 22px;
+  margin-bottom: 5px;
 }
 
 .ovo-item em {
   color: #888;
-  font-size: 14px;
+  font-size: 12px;
+  font-style: normal;
 }
 
 .ovo-item button {
