@@ -1,6 +1,6 @@
 import React from 'react';
 // components
-import Currency from './components/modules/Form/Form';
+import Currency from './components/modules/Main/Main';
 import './App.css';
 
 function App() {

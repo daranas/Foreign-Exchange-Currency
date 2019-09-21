@@ -21,12 +21,12 @@ class Currency extends React.Component {
     this.setState({ currency });
   }
 
-  handleChange = (event) => {
-    event.preventDefault();
+  handleChange = (e) => {
+    e.preventDefault();
     const { currency, selectedCurrency } = this.state;
     const data = {
-      'currency': event.target.value,
-      'value': currency[event.target.value]
+      'currency': e.target.value,
+      'value': currency[e.target.value]
     };
     
     this.setState({
@@ -34,12 +34,23 @@ class Currency extends React.Component {
     });
   };
 
+  handleDelete = currency => {
+    const items = this.state.selectedCurrency.filter(item => item.currency !== currency);
+    this.setState({ selectedCurrency: items });
+  };
+
   render() {
     const { currency, selectedCurrency, value } = this.state;
 
     return (
       <div>
-        <Item data={selectedCurrency}/>
+        {selectedCurrency.map(item =>
+          <Item 
+            key={item.currency}
+            currency={item.currency} 
+            value={item.value} 
+            onDelete={this.handleDelete} />
+        )}
         <select onChange={this.handleChange} value={value}>
           {Object.keys(currency).map(key =>
             <option key={key} value={key}>{key}</option>
