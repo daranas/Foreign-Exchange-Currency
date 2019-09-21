@@ -10,6 +10,7 @@ class Main extends React.Component {
     super(props);
 
     this.state = {
+      defaultValue: 10,
       currency: {},
       selectedCurrency: [],
       value: '?'
@@ -22,7 +23,7 @@ class Main extends React.Component {
     this.setState({ currency });
   }
 
-  handleChange = (e) => {
+  handleAddItem = (e) => {
     e.preventDefault();
     const { currency, selectedCurrency } = this.state;
     const data = {
@@ -35,28 +36,49 @@ class Main extends React.Component {
     });
   };
 
+  handleChange = (e) => {
+    e.preventDefault();
+    console.log(e.target.value);
+    
+  }
+
   handleDelete = (currency) => {
     const items = this.state.selectedCurrency.filter(item => item.currency !== currency);
     this.setState({ selectedCurrency: items });
   };
 
+  toCurrency(number) {
+    const formatter = new Intl.NumberFormat("sv-SE", {
+      style: "decimal",
+      currency: "SEK"
+    });
+
+    return formatter.format(number);
+  }
+
   render() {
-    const { currency, selectedCurrency, value } = this.state;
+    const { defaultValue, currency, selectedCurrency, value } = this.state;
 
     return (
       <div className="ovo-currency-wrapper">
+        <input type="number"
+          onChange={this.handleChange}
+          defaultValue={defaultValue} />
         {selectedCurrency.map(item =>
           <Item 
             key={item.currency}
             currency={item.currency} 
-            value={item.value} 
+            value={this.toCurrency(item.value)}
             onDelete={this.handleDelete} />
         )}
-        <select onChange={this.handleChange} value={value}>
-          {Object.keys(currency).map(key =>
-            <option key={key} value={key}>{key}</option>
-          )};
-        </select>
+        <div className="add-currency">
+          <label htmlFor="currency">Add Currency</label>
+          <select onChange={this.handleAddItem} value={value}>
+            {Object.keys(currency).map(key =>
+              <option key={key} value={key}>{key}</option>
+            )};
+          </select>
+        </div>
       </div>
     );
   }

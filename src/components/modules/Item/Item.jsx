@@ -6,6 +6,7 @@ const Item = (props) => {
     <div className="ovo-item">
       <h3>{props.currency}</h3>
       <h1>{props.value}</h1>
+      <em>1 {props.currency} = {props.currency} {props.value}</em>
       <button onClick={() => props.onDelete(props.currency)}>(-)</button>
     </div>
   )

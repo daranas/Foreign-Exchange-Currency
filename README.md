@@ -1,4 +1,4 @@
-Open [DEMO](#) to see demo.
+Open [DEMO](https://ovo-foreign-exchange.herokuapp.com/) to see demo.
 
 Application was made by components that are modular / structured. So it's easy to understand and easy to develop (low coupling between modules)
 

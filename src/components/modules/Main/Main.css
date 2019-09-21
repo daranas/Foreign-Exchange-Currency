@@ -7,3 +7,32 @@
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
   border-radius: 3px;
 }
+
+.ovo-currency-wrapper input {
+  width: 100%;
+  text-align: right;
+  border: 1px solid #eeeeee;
+  padding: 10px;
+  font-size: 16px;
+  border-left: 0;
+  border-right: 0;
+}
+
+.ovo-currency-wrapper .add-currency {
+  background: #f8f8f8;
+  padding: 20px;
+}
+
+.ovo-currency-wrapper .add-currency label {
+  color: #888888;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.ovo-currency-wrapper .add-currency select {
+  width: 100%;
+  height: 36px;
+  background: #ffffff;
+  margin-top: 5px;
+  border: 1px solid #dddddd;
+}
