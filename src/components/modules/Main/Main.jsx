@@ -44,7 +44,7 @@ class Main extends React.Component {
     const { currency, selectedCurrency, value } = this.state;
 
     return (
-      <div className="currencyWrapper">
+      <div className="ovo-currency-wrapper">
         {selectedCurrency.map(item =>
           <Item 
             key={item.currency}
