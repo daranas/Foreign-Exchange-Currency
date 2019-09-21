@@ -1,5 +1,7 @@
 import React from 'react';
 import API from '../../../helpers/API';
+// components
+import Item from '../Item/Item';
 
 class Currency extends React.Component {
 
@@ -8,7 +10,7 @@ class Currency extends React.Component {
 
     this.state = {
       currency: {},
-      selectedCurrency: {},
+      selectedCurrency: [],
       value: '?'
     }
   }
@@ -16,29 +18,28 @@ class Currency extends React.Component {
   async componentDidMount() {
     let getCurrency = await API.get('/latest?base=USD');
     let currency = getCurrency.data.rates;
-    // console.log(currency);
-    
     this.setState({ currency });
   }
 
   handleChange = (event) => {
+    event.preventDefault();
     const { currency, selectedCurrency } = this.state;
     const data = {
       'currency': event.target.value,
       'value': currency[event.target.value]
     };
-    // Object.assign(selectedCurrency, data);
     
-    this.setState({ selectedCurrency: data });
-    console.log(selectedCurrency);
-    
+    this.setState({
+      selectedCurrency: selectedCurrency.concat(data)
+    });
   };
 
   render() {
-    const { currency, value } = this.state;
+    const { currency, selectedCurrency, value } = this.state;
 
     return (
       <div>
+        <Item data={selectedCurrency}/>
         <select onChange={this.handleChange} value={value}>
           {Object.keys(currency).map(key =>
             <option key={key} value={key}>{key}</option>
